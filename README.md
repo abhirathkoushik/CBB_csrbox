@@ -18,3 +18,4 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 ## Code Description
 
 ####uatg_csrbox_ext_bitmask.py
+-here the 'mxl' field of misa csr is considered
