@@ -11,8 +11,8 @@ import random
 #if its updated, then it triggers a trap in a register (x31) in this case.
 
 class uatg_csrbox_rocheck(IPlugin):
-    def _init_(self)->None:
-        super()._init_()
+    def __init__(self)-> None:
+        super().__init__()
 
     def execute(self, core_yaml, isa_yaml) -> bool:
         return
@@ -31,8 +31,6 @@ class uatg_csrbox_rocheck(IPlugin):
         asm +='trap:\n\taddi x31,x31,1\n'
 	    
         compile_macros = []
-
-
         return [{
             'asm_code': asm,
             'asm_sig': '',
