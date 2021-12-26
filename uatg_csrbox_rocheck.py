@@ -24,7 +24,7 @@ class uatg_csrbox_rocheck(IPlugin):
 
         for j in range(0, len(csr)):
             asm += f'\t lin x3,0x3020\n\t csrrw x4,{csr[j]},x3\n\t beq x4,{csr[j]},trap\n'
-            for i in range(0,3):
+            for i in range(0,200):
                 x=random.randrange(0,2**32)
                 asm += f'\t li x3,{hex(x)}\n\t csrrw x4,{csr[j]},x3\n\t beq x4,{csr[j]},trap\n'
         
