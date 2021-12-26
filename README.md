@@ -21,7 +21,7 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 
 - here the `extensions` field of misa csr is considered.
 - `Extensions` field has a legal bitmask value of `0x0141105` as specified in isa yaml which is stored in register `x3`.
--  `x4` register is stored with negated value of `x3` register.
--  then an `and` operation is done on registers `x3` and `misa` and stored in `x5`.
--  then an `and` operation is done on registers `x0` and `x4` and stored in `x6`.
--  then followed by an `or` operation on registers `x5` and `x6`.
+-  x4 register is stored with negated value of x3 register.
+-  then an `and` operation is done on registers x3 and misa and stored in x5.
+-  then an `and` operation is done on registers x0 and x4 and stored in x6.
+-  then followed by an `or` operation on registers x5 and x6.
