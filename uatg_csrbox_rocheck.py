@@ -6,9 +6,13 @@ from random import randint
 import random
 
 
-#Here, we try to load values into Read_only CSR's like 'mimpid' or 'mvendorid'
-#and check if the register values have actually been updated.
-#if its updated, then it triggers a trap in a register (x31) in this case.
+"""
+Read-Only CSR's like 'mimpid' or 'mvendorid' have to hold the same value as specified 
+in the isa yaml and cannot be changed.
+
+Here, we try to load values into these CSR's and check if they have actually been updated.
+If updated, then a trap is triggered (register x31 in this case)
+"""
 
 class uatg_csrbox_rocheck(IPlugin):
     def __init__(self)-> None:
