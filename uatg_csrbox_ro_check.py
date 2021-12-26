@@ -14,7 +14,7 @@ Here, we try to load values into these CSR's and check if they have actually bee
 If updated, then a trap is triggered (register x31 in this case)
 """
 
-class uatg_csrbox_rocheck(IPlugin):
+class uatg_csrbox_ro_check(IPlugin):
     def __init__(self)-> None:
         super().__init__()
 
