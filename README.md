@@ -19,4 +19,6 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 
 ####uatg_csrbox_ext_bitmask.py
 
--here the `mxl` field of misa csr is considered
+- here the `extensions` field of misa csr is considered.
+- `Extensions` field has a legal bitmask value of `0x0141105` as specified in isa yaml which is stored in register `x3`.
+-  `x4` register is stored with negated value of `x3`. 
