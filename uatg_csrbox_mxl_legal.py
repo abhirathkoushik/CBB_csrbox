@@ -54,14 +54,4 @@ class uatg_csrbox_mxl_legal(IPlugin):
     def generate_covergroups(self, config_file) -> str:
         sv = ""
         return sv
-
-
-
-
-
-
-
-
-
-
     
