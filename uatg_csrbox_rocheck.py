@@ -7,7 +7,7 @@ import random
 
 
 #Here, we try to load values into Read_only CSR's like 'mimpid' or 'mvendorid'
-#and check if the values have actually been updated.
+#and check if the register values have actually been updated.
 #if its updated, then it triggers a trap in a register (x31) in this case.
 
 class uatg_csrbox_rocheck(IPlugin):
