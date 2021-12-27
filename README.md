@@ -25,3 +25,24 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 -  then an `and` operation is done on registers x3 and misa and stored in x5.
 -  then an `and` operation is done on registers x0 and x4 and stored in x6.
 -  then followed by an `or` operation on registers x5 and x6.
+- trap is araised when x3 and misa valuses are not equal.
+- when trap occurs x31 is incremented which we can find where trap has occurred an test has failed.
+
+####uatg_csrbox_mstatus_mpp.py 
+
+- here the `mpp` field under mstatus csr is considerd.
+- `mpp` has 3 legal values 0x0,0x1,0x3.
+- if we try to write 0x1, then mstatus register should be updated
+- if we try to write 0x2, then it should remain unchanged.
+- if mstatus and x2 are equal a `trap` is araised.
+- when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
+
+####uatg_csrbox_mxl_legal.py
+
+- here we consider the `mxl` field of misa csr which is `warl`.
+- x3 is loaded with legal value 0x2
+- if we try to write illegal values it should return a legal value.
+- if misa and x3 are not equal a trap is araised.
+-  when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
+
+- 
