@@ -40,9 +40,11 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 ####uatg_csrbox_mxl_legal.py
 
 - here we consider the `mxl` field of misa csr which is `warl`.
-- x3 is loaded with legal value 0x2
+- x3 is loaded with legal value 0x2.
 - if we try to write illegal values it should return a legal value.
 - if misa and x3 are not equal a trap is araised.
 -  when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
-
-- 
+ 
+ ####uatg_csrbox_ro_check.py
+ 
+ -
