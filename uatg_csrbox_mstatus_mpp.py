@@ -23,12 +23,12 @@ class uatg_csrbox_mstatus_mpp(IPlugin):
 
     def execute(self, core_yaml, isa_yaml) -> bool:
         self.hart0 = isa_yaml['hart0']
-        self.mstatus = hart0['mstatus']
-        self.rv64 = mstatus['rv64']
-        self.mpp = rv64['mpp']
-        self.type1 = mpp['type']
-        self.warl = type1['warl']
-        self.legal = warl['legal']
+        self.mstatus = self.hart0['mstatus']
+        self.rv64 = self.mstatus['rv64']
+        self.mpp = self.rv64['mpp']
+        self.type1 = self.mpp['type']
+        self.warl = self.type1['warl']
+        self.legal = self.warl['legal']
         return 
         
     def generate_asm(self) -> Dict[str, str]:
