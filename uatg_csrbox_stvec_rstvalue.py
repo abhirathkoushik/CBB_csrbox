@@ -16,12 +16,13 @@ class uatg_csrbox_stvec_rstvalue(IPlugin):
     def generate_asm(self) -> Dict[str, str]:
 	
         asm = ''
-        asm+= f'\tli x4, {self.rv}\n'
+        asm += f'\tli x4, {self.rv}\n'
         for i in range(0,100):
-           asm+= '\t csrr x5,stvec \n'
-           asm+= '\t bne x4,stvec,trap \n'
+	   asm += '\t csrr x5,stvec \n'
+           asm += '\t csrrc x0,stvec, x5 \n'
+           asm += '\t bne x4,stvec,trap \n'
         
-        asm+= 'trap:\n\taddi x31, x0,1\n'
+        asm += 'trap:\n\taddi x31, x0,1\n'
         
         compile_macros = []
 
