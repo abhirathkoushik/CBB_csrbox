@@ -34,7 +34,7 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 - `mpp` has 3 legal values 0x0,0x1,0x3.
 - if we try to write 0x1, then mstatus register should be updated
 - if we try to write 0x2, then it should remain unchanged.
-- if mstatus and x2 are equal a `trap` is araised.
+- if mstatus and x2 are not equal a `trap` is araised.
 - when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
 
 ####uatg_csrbox_mxl_legal.py
