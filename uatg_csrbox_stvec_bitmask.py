@@ -24,7 +24,7 @@ class uatg_csrbox_ext_bitmask(IPlugin):
         
         asm='\t li x4,0xffffffffffffffff \n'   
         asm+= f'\t and x5,x4,{self.bitmask} \n'
-        asm+= f'\t neg {self.bitmask},{self.bitmask} \n'
+        asm+= f'\t not {self.bitmask},{self.bitmask} \n'
         asm+= f'\t and x6,{default_value},{self.bitmask} \n'
         asm+= '\t or x7,x5,x6 \n'                  
         asm+= f'\t beq x7,{self.bitmask},loop \n'
