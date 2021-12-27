@@ -27,15 +27,15 @@ class uatg_csrbox_ext_bitmask(IPlugin):
         self.ext = self.rv64['extensions']
         self.type1 = self.ext['type']
         self.warl = self.type1['warl']
-        self.legal= self.warl['legal']
+        self.bitmask= self.warl['legal']
         return 
         
     def generate_asm(self) -> Dict[str, str]:
 
-        asm = f"\t li x1, {self.legal} \n"
+        asm = f"\t li x1, {self.bitmask} \n"
         asm += "\t csrrw x0,misa,x1 \n"
         
-        asm += "\t li x3,0x0141105 \n"
+        asm += f"\t li x3,{self.bitmask} \n"
         asm += "\t not x4,x3 \n"
 
         asm += "\t and x5,misa,x3 \n"
