@@ -22,12 +22,12 @@ class uatg_csrbox_ext_bitmask(IPlugin):
 
     def execute(self, core_yaml, isa_yaml) -> bool:
         self.hart0 = isa_yaml['hart0']
-        self.misa = hart0['misa']
-        self.rv64 = misa['rv64']
-        self.ext = rv64['extensions']
-        self.type1 = ext['type']
-        self.warl = type1['warl']
-        self.legal= warl['legal']
+        self.misa = self.hart0['misa']
+        self.rv64 = self.misa['rv64']
+        self.ext = self.rv64['extensions']
+        self.type1 = self.ext['type']
+        self.warl = self.type1['warl']
+        self.legal= self.warl['legal']
         return 
         
     def generate_asm(self) -> Dict[str, str]:
