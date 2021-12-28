@@ -17,6 +17,7 @@ class uatg_csrbox_stvec_rstvalue(IPlugin):
 	
         asm = ''
         asm += f'\tli x4, {self.rv}\n'
+	asm += '\t csrrw x0,stvec,x4 \n'
         for i in range(0,100):
 	   asm += '\t csrr x5,stvec \n'
            asm += '\t csrrc x0,stvec, x5 \n'
