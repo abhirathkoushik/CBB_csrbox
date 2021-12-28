@@ -18,8 +18,7 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 
 ## Code Description
 
-####uatg_csrbox_ext_bitmask.py
-
+#### uatg_csrbox_ext_bitmask.py
 - here the `extensions` field of misa csr is considered.
 - `Extensions` field has a legal bitmask value of `0x0141105` as specified in isa yaml which is stored in register x3.
 -  x4 register is stored with negated value of x3 register.
@@ -29,8 +28,8 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 - trap is araised when x3 and misa valuses are not equal.
 - when trap occurs x31 is incremented which we can find where trap has occurred an test has failed.
 
-####uatg_csrbox_mstatus_mpp.py 
 
+#### uatg_csrbox_mstatus_mpp.py 
 - here the `mpp` field under mstatus csr is considerd.
 - `mpp` has 3 legal values 0x0,0x1,0x3.
 - if we try to write 0x1, then mstatus register should be updated
@@ -38,19 +37,21 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 - if mstatus and x2 are not equal a `trap` is araised.
 - when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
 
-####uatg_csrbox_mxl_legal.py
-
+#### uatg_csrbox_mxl_legal.py
 - here we consider the `mxl` field of misa csr which is `warl`.
 - x3 is loaded with legal value 0x2.
 - if we try to write illegal values it should return a legal value.
 - if misa and x3 are not equal a trap is araised.
 -  when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
  
- ####uatg_csrbox_ro_check.py
+ #### uatg_csrbox_ro_check.py
+ - Here, we have Read-Only CSR's like 'mvendorid','mhartid','mimpid','marchid'
+ - These are Read-Only CSR's so we cannot change their values.
+ - In a loop, we assign random values to these CSR's and check if their values change.
+ - If they change their value, we call a trap by updating the register x31
  
  
- ####uatg_csrbox_stvec_bitmask.py
- 
+ #### uatg_csrbox_stvec_bitmask.py
  - here we consider the 'stvec' csr.
  - to test we load 0xffffffffffffffff into x4.
  - and then perform `(wr_value && bitmask) || (default_value && ~bitmask)`.
@@ -58,7 +59,7 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
  - else if not equal a trap is araised.
  -  when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
  
- ####uatg_csrbox_stvec_mode.py
+ #### uatg_csrbox_stvec_mode.py
  -  here we consider the `stvec` csr to test warl under mode field.
  -  it is a 2 bit field with legal values 0x0,0x1.
  -  when we write legal value it the register should get updated.
