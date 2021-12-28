@@ -45,7 +45,7 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 -  when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
  
  #### uatg_csrbox_ro_check.py
- - Here, we have Read-Only CSR's like 'mvendorid','mhartid','mimpid','marchid'
+ - Here, we have Read-Only CSR's like 'mvendorid' , 'mhartid' , 'mimpid' , 'marchid'
  - These are Read-Only CSR's so we cannot change their values.
  - In a loop, we assign random values to these CSR's and check if their values change.
  - If they change their value, we call a trap by updating the register x31
