@@ -7,11 +7,12 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 ```
 .
 ├── README.md -- Describes the idea behind each test and how the ASM is generated efficiently using Python 3.
-├── uatg_csrbox_ext_bitmask.py -- Generates ASM to check the extension field of misa csr by  by using csrrw instruction(sample instructions).
-├── uatg_csrbox_mstatus_mpp.py -- Generates ASM to check the mpp field under mstatus csr by using csrrw instrution(sample instructions) .
-├── uatg_csrbox_mxl_legal.py -- Generates ASM to check the mxl field of misa csr by using csrrw instruction(sample instructions).
+├── uatg_csrbox_ext_bitmask.py -- Generates ASM to check the extension field of misa csr by  by using csrrw instruction.
+├── uatg_csrbox_mstatus_mpp.py -- Generates ASM to check the mpp field under mstatus csr by using csrrw instrution.
+├── uatg_csrbox_mxl_legal.py -- Generates ASM to check the mxl field of misa csr by using csrrw instruction.
 ├── uatg_csrbox_ro_check.py -- Generates ASM to check the csrrw instruction in registers mvendorid,mhartid,mimpid,marchid.
-├── 
+├── uatg_csrbox_stvec_bitmask.py -- Generates ASM to test the warl field using bitmask.
+├── uatg_csrbox_stvec_mode.py -- Generates ASM to test the warl field under mode of stvec csr.
 
 ```
 
@@ -47,4 +48,20 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
  
  ####uatg_csrbox_ro_check.py
  
- -
+ 
+ ####uatg_csrbox_stvec_bitmask.py
+ 
+ - here we consider the 'stvec' csr.
+ - to test we load 0xffffffffffffffff into x4.
+ - and then perform `(wr_value && bitmask) || (default_value && ~bitmask)`.
+ - if content in x7 and bitmask are equal perform `csrrw` to write x4 into stvec.
+ - else if not equal a trap is araised.
+ -  when `trap` occurs x31 is incremented which we can find where trap has occurred an test has failed.
+ 
+ ####uatg_csrbox_stvec_mode.py
+ -  here we consider the `stvec` csr to test warl under mode field.
+ -  it is a 2 bit field with legal values 0x0,0x1.
+ -  when we write legal value it the register should get updated.
+ -  when we write illegal value it should remain unchanged.
+ 
+ ####
