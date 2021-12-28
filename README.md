@@ -13,6 +13,7 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
 ├── uatg_csrbox_ro_check.py -- Generates ASM to check the csrrw instruction in registers mvendorid,mhartid,mimpid,marchid.
 ├── uatg_csrbox_stvec_bitmask.py -- Generates ASM to test the warl field using bitmask.
 ├── uatg_csrbox_stvec_mode.py -- Generates ASM to test the warl field under mode of stvec csr.
+├── uatg_csrbox_mtvec_rstvalue.py -- Generates ASM to check if reset value in mtvec matches the isa_yaml files.
 
 ```
 
@@ -65,4 +66,10 @@ The 'CSRBOX' (https://csrbox.readthedocs.io/en/latest/) is an external python to
  -  when we write legal value it the register should get updated.
  -  when we write illegal value it should remain unchanged.
  
- ####
+ #### uatg_csrbox_mtvec_rstvalue.py
+ 
+ - here we consider `mtvec` csr to check if reset value matches the isa_yaml file.
+ - the reset value of mtvec is assigned to x4 register.
+ - mtvec reset value is then copied x5.
+ - if high bits are available then clear the high bits in x5 using `csrrc`
+ - then x4 and mtvec is compared,if not equal araise a trap.
