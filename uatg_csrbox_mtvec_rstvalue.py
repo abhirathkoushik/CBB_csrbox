@@ -9,19 +9,19 @@ class uatg_csrbox_stvec_rstvalue(IPlugin):
         
     def execute(self, core_yaml, isa_yaml) -> bool:
     	self.hart0 = isa_yaml['hart0']
-        self.stvec = self.hart0['stvec']
-    	self.rv = self.stvec['reset-val']
+        self.mtvec = self.hart0['mtvec']
+    	self.rv = self.mtvec['reset-val']
         return
     	
     def generate_asm(self) -> Dict[str, str]:
 	
         asm = ''
         asm += f'\tli x4, {self.rv}\n'
-	asm += '\t csrrw x0,stvec,x4 \n'
+	asm += '\t csrrw x0,mtvec,x4 \n'
         for i in range(0,100):
-	   asm += '\t csrr x5,stvec \n'
-           asm += '\t csrrc x0,stvec, x5 \n'
-           asm += '\t bne x4,stvec,trap \n'
+	   asm += '\t csrr x5,mtvec \n'
+           asm += '\t csrrc x0,mtvec, x5 \n'
+           asm += '\t bne x4,mtvec,trap \n'
         
         asm += 'trap:\n\taddi x31, x0,1\n'
         
