@@ -14,10 +14,10 @@ class uatg_csrbox_ext_bitmask(IPlugin):
         self.base = self.rv64['base']
         self.type1 = self.base['type'] 
         self.warl = self.type1['warl']
-        self.legal= self.warl['legal']
+        self.bitmask= self.warl['legal']
         self.bitmask=self.legal['bitmask']           
         self.rv = self.stvec['reset-val']
-        self.default_value=self.rv['default_value']  
+        self.default_value=self.rv['reset-value']  
         return 
         
     def generate_asm(self) -> Dict[str, str]:
